@@ -6,27 +6,29 @@
     <title>Using API's</title>
     <script defer src="https://cdn.jsdelivr.net/gh/hankhank10/alpine-fetch@main/alpine-fetch.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <link rel="stylesheet" href="/output.css">
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <div x-data="{recipes: $fetchjson('https://dummyjson.com/recipes/20', jsonItem = 'image')}">
-        <img alt="recipe" x-bind:src="recipes" />
-    </div>
+<body class="bg-pink-100 p-4">
+    <h1 class="text-center font-extrabold text-black font-helvetica">Recipes</h1>
 
-    <div x-data="{ igr: $fetchjson('https://dummyjson.com/recipes/20', jsonItem = 'ingredients') }">
-        <h2> Ingredients: </h2>
-        <p x-text="igr"></p>
+    <div x-data="{recipes: $fetchjson('https://dummyjson.com/recipes/1', jsonItem = 'image')}">
+        <div class="flex items-center mb-4">
+            <img alt="recipe" x-bind:src="recipes" class="rounded-lg shadow-md max-w-sm h-auto mr-4"/>
+            <div x-data="{igr: $fetchjson('https://dummyjson.com/recipes/1', jsonItem = 'ingredients')}" class="flex-1">
+                <h2 class="font-semibold mb-2">Ingredients:</h2>
+                <p x-text="igr" class="text-gray-800"></p>
+            </div>
+        </div>
     </div>
 
     <div x-data="{recipe: $fetchjson('https://dummyjson.com/recipes/11', jsonItem = 'image')}">
-        <img alt="recipe" x-bind:src="recipe" />
+        <div class="flex items-center mb-4">
+            <img alt="recipe" x-bind:src="recipe" class="rounded-lg shadow-md max-w-sm h-auto mr-4" />
+            <div x-data="{ igre: $fetchjson('https://dummyjson.com/recipes/11', jsonItem = 'ingredients') }" class="flex-1">
+                <h2 class="font-semibold mb-2">Ingredients:</h2>
+                <p x-text="igre" class="text-gray-800"></p>
+            </div>
+        </div>
     </div>
-
-    <div x-data="{ igre: $fetchjson('https://dummyjson.com/recipes/11', jsonItem = 'ingredients') }">
-        <h2> Ingredients: </h2>
-        <p x-text="igre"></p>
-    </div>
-
-
 </body>
 </html>
